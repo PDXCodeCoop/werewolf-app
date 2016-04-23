@@ -1,0 +1,69 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+<link href="{% static 'werewolf/css/base.css' %}" rel="stylesheet">
+<input type="hidden" value="{{request.session.room}}" name="room_label" id="room_label"/>
+<input type="hidden" value="{{request.session.game}}" name="game_id" id="game_id"/>
+<input type="hidden" value="{{request.session.player.pk}}" name="player_id" id="player_id"/>
+<input type="hidden" value="" name="role" id="role"/>
+<input type="hidden" value="" name="status" id="status"/>
+<input type="hidden" value="" name="turn" id="turnVal"/>
+
+
+<div class="content">
+  <div class="username">
+    <h1 style="background-color: {# would be cool to have colors associated with players? #}">
+        <span class="usernameValue"></span> <span class="statusValue"></span>
+    </h1>
+  </div>
+  <div class="tabs">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active roleTab"><a href="#roleTab" aria-controls="roleTab" role="tab" data-toggle="tab">Role</a></li>
+      <li role="presentation" class="voteTab"><a href="#voteTab" aria-controls="voteTab" role="tab" data-toggle="tab">Vote</a></li>
+      <li role="presentation" class="actionTab"><a href="#actionTab" aria-controls="actionTab" role="tab" data-toggle="tab">Action</a></li>
+      <li role="presentation" class="actionTab pull-right"><a>Round <span class="turnValue"></span></a></li>
+    </ul>
+  </div>
+  <div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane active tabcontent-role" id="roleTab">
+      <button class="btn btn-role" type="button" data-toggle="collapse" data-target="#collapseRole" aria-expanded="false" aria-controls="collapseExample">Toggle Role</button>
+      <div class="collapse" id="collapseRole">
+        <div class="well">
+          <h3 id="roleTitle"><span class="roleValue"></span></h3>
+          <p id="roleDescription"></p>
+          <h3>Abilities</h3>
+          <p id="abilityDescription"></p>
+        </div>
+      </div>
+      <p class="role-help">Make sure no one is looking over your shoulder!</p>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="voteTab">
+      <h3>Who do you think is killing people?</h3>
+      <div id="player_vote">
+      <span class="current_players">
+      </span>
+      </div>
+      <p></p>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="actionTab">
+      <h3 id="action_description">No actions available</h3>
+      <h4 id="action_result"></h3>
+      <div id="action_vote">
+      <span class="current_players_action">
+      </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+    <script type="text/javascript" src='{% static "web_socket/reconnecting-websocket.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "werewolf/js/remote.js" %}'></script>
+{% endblock js %}

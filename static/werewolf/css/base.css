@@ -1,0 +1,138 @@
+h1, h3 {
+  color: #E0EEFF;
+}
+
+a {
+  color: white;
+}
+
+body {
+  background-color: #01161E;
+}
+
+.content {
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.btn {
+  border: 1px solid rgba(255, 255, 255, 0.2);;
+}
+
+.role-help {
+  color: #aaa;
+  margin-top: 20px;
+}
+
+@media (min-width: 700px) {
+  .content {
+    width: 50vw;
+  }
+}
+@media (max-width: 700px) {
+  .content {
+    width: 100vw;
+  }
+}
+.username h1 {
+  top: 0;
+  background-color: #136F63;
+  margin-top: 0;
+  color: #efe;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.content {
+  margin: 0 auto;
+}
+
+.well p {
+  color: #556;
+}
+.well h3 {
+  color: #6D696A;
+}
+
+.tab-pane {
+  padding: 2% 5%;
+}
+
+.btn-role, .btn-option, .btn-submit {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 10px;
+  background-color: #01161E;
+  color: #E0EEFF;
+}
+.btn-role:hover, .btn-option:hover, .btn-submit:hover {
+  color: white;
+}
+
+.btn-option, .btn-submit {
+  margin-bottom: 5%;
+  margin-top: 0;
+}
+
+.btn-submit {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #040B15;
+}
+
+.btn-register {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #01161E;
+  color: #E0EEFF;
+}
+
+.nav-tabs {
+  background-color: #01161E;
+}
+
+.tab-content {
+  color: #fff;
+  border: 1px solid white;
+  border-top: none;
+}
+.tab-content #roleTab {
+  background-color: #011E2A;
+}
+.tab-content #actionTab {
+  background-color: #1F4256;
+}
+.tab-content #voteTab {
+  background-color: #0D2B39;
+}
+
+.nav-tabs > li > a {
+  border: medium none;
+  background-color: #040B15 !important;
+  color: #fff !important;
+}
+
+.nav-tabs > li.roleTab > a {
+  background-color: #011E2A !important;
+}
+
+.nav-tabs > li.voteTab > a {
+  background-color: #0D2B39 !important;
+}
+
+.nav-tabs > li.actionTab > a {
+  background-color: #1F4256 !important;
+}
+
+.nav-tabs > li > a:hover {
+  border: medium none;
+  color: #fff;
+}
+
+.option-box {
+  background-color: #0D2B39;
+  border: 1px solid white;
+  color: white;
+}

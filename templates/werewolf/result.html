@@ -1,0 +1,42 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+{{ block.super }}
+<link href="{% static 'werewolf/css/base.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<input type="hidden" value="{{request.session.room}}" name="room_label" id="room_label"/>
+<input type="hidden" value="{{request.session.game}}" name="game_id" id="game_id"/>
+<div class="container">
+    <div class="username">
+      <h1 style="background-color: {# would be cool to have colors associated with players? #}">
+          {{ game.winner|title }} Win!
+      </h1>
+    </div>
+    <a class='vote btn btn-option' href='#' value="{{ request.session.room }}" id="new_game">New Game</a>
+    {% for turn in game.turns.all %}
+        {% if forloop.counter == 1 %}
+        <ul>
+        {% for player in turn.players.all %}
+            <li>{{ player.name }}: {{player.role.name }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <h4>Turn #{{ turn.counter }}</h4>
+        <ul>
+        {% for vote in turn.votes.all %}
+            <li>{{ vote.voter.name }} --> {{ vote.target.name }} ({{ vote.category }})</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+  <script type="text/javascript" src='{% static "web_socket/reconnecting-websocket.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "werewolf/js/result.js" %}'></script>
+{% endblock js %}

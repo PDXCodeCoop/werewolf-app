@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+{{ block.super }}
+<link href="{% static 'werewolf/css/base.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<input type="hidden" value="{{ room.label }}" name="room_label" id="room_label"/>
+<input type="hidden" value="{{request.session.game}}" name="game_id" id="game_id"/>
+
+<div class="container content option-box">
+    <h1>{{ room.label }}</h1>
+    <h3>YOU ARE: {{ request.session.player.name }}</h3>
+    Game #{{game.counter}}
+    <ul id = 'player_list'>
+    {% for player in game.players.all %}
+        <li>{{ player.name }}</li>
+    {% endfor %}
+    </ul>
+  <form id="assign_roles_form" action="#" method="post">
+      {% csrf_token %}
+  </form>
+  <button id="assign_roles_button" class="btn btn-register" type="submit">ASSIGN ROLES</button>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+  <script type="text/javascript" src='{% static "web_socket/reconnecting-websocket.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "werewolf/js/roster.js" %}'></script>
+{% endblock js %}

@@ -1,0 +1,29 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+  {% load staticfiles %}
+  <link href="{% static 'werewolf/css/base.css' %}" rel="stylesheet">
+
+<div class="container content option-box" id="register">
+    <h1>Register A New Game</h1>
+
+    <form class="form" action="" method="post">
+        {% csrf_token %}
+        <div class="col-sm-6 form-group">
+          <span class="role-help">Game Room: </span>
+          <input class="form-control" type="text" name="label"/>
+        </div>
+        <div class="col-sm-6 form-group">
+          <span class="role-help">Username:</span>
+          <input class="form-control" type="text" name="username"/>
+        </div>
+          <input class="btn btn-register" type="submit" value="Register">
+    </form>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+  <script type="text/javascript" src='{% static "web_socket/reconnecting-websocket.min.js" %}'></script>
+{% endblock js %}
